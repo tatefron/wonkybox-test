@@ -1,0 +1,116 @@
+<div class="section-content py-section-vertical-spacing px-section" x-data="ThemeSection_login()" x-init="init()" data-color-scheme="primary">
+  <div class="max-w-md mx-auto card-container" :class="{'hidden': state !== 'login'}" data-state="login">
+    <div class="card p-4.5 lg:p-10 text-center mx-auto relative z-shape-divider">
+      {% form 'customer_login', data-login-focus: true, tabindex: '-1' %}
+        <div class="lg:flex items-center justify-center">
+          <h1 class="font-heading heading-base pt-2 mb-3" tabindex="-1" data-should-focus>{{ 'customer.login.title' | t }}</h1>
+         
+        </div>
+
+        {% if form.errors %}
+          <div class="mt-5" tabindex="-1" data-login-error>{{ form.errors | default_errors }}</div>
+        {% endif %}
+
+        <label class="mt-5 mb-1 block font-secondary text-sm text-left" for="CustomerEmail" class="label-hidden">
+          {{ 'customer.login.email' | t }}
+        </label>
+        <input type="email"
+              name="customer[email]"
+              id="CustomerEmail"
+              class="w-full {% if form.errors contains 'email' %}border-scheme-accent{% endif %}"
+              spellcheck="false"
+              autocomplete="email"
+              autocapitalize="off"
+              {% unless form.errors %}autofocus{% endunless %}>
+
+        {% if form.password_needed %}
+          <label class="mt-5 mb-1 block font-secondary text-sm text-left" for="CustomerPassword" class="label-hidden">
+            {{ 'customer.login.password' | t }}
+          </label>
+          <input type="password"
+                name="customer[password]"
+                id="CustomerPassword"
+                autocomplete="password"
+                class="w-full {% if form.errors contains 'password' %}border-scheme-accent{% endif %}">
+        {% endif %}
+
+        <div class="mt-5">
+          <button type="submit" class="push-btn theme-button">
+            <span class="push-btn-surface w-full">{{ 'customer.login.sign_in' | t }}</span>
+          </button>
+        </div>
+
+        <div class="mt-3 text-left">
+         
+          {% if form.password_needed %}
+            <button @click="state = 'recover'" type="button" class="mt-2.5 mb-1 block ">
+              <span class="text-sm font-extrabold border-b-1 border-b-scheme-text">{{ 'customer.login.forgot_password' | t }}</span>
+            </button>
+          {% endif %}
+           <a class="font-secondary font-extrabold border-b-1 text-sm border-b-scheme-text" href="{{ routes.account_register_url }}">{{ 'layout.customer.create_account' | t }}</a>
+        </div>
+      {% endform %}
+    </div>
+    <div class="card-border"></div>
+  </div>
+
+  <div class="max-w-md mx-auto card-container" :class="{'hidden': state !== 'recover'}" x-cloak data-state="recover">
+    <div class="card p-4.5 lg:p-10 text-center mx-auto relative z-shape-divider">
+      <h2 class="font-heading heading-base mt-2 mb-4 pb-2" data-should-focus tabindex="-1">{{ 'customer.recover_password.title' | t }}</h2>
+
+      {% form 'recover_customer_password' %}
+        {% if form.errors %}
+          <div class="mt-5" tabindex="-1" data-login-error>{{ form.errors | default_errors }}</div>
+        {% endif %}
+
+        {% if form.posted_successfully? %}
+          <div class="mt-5 pb-2 text-center inline-block">
+            <svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M27.5 0C22.061 0 16.7442 1.61285 12.2218 4.63458C7.69948 7.65632 4.17473 11.9512 2.09332 16.9762C0.0119154 22.0012 -0.532676 27.5305 0.528417 32.865C1.58951 38.1995 4.20863 43.0995 8.05457 46.9454C11.9005 50.7914 16.8005 53.4105 22.135 54.4716C27.4695 55.5327 32.9988 54.9881 38.0238 52.9067C43.0488 50.8253 47.3437 47.3005 50.3654 42.7782C53.3871 38.2558 55 32.939 55 27.5C55 20.2065 52.1027 13.2118 46.9454 8.05456C41.7882 2.89731 34.7935 0 27.5 0ZM38.1333 22.3896L24.3833 33.8479C23.9439 34.2161 23.3825 34.4062 22.8097 34.3808C22.237 34.3553 21.6946 34.1161 21.2896 33.7104L16.7063 29.1271C16.2747 28.6955 16.0323 28.1103 16.0323 27.5C16.0323 26.8897 16.2747 26.3044 16.7063 25.8729C17.1378 25.4414 17.7231 25.1989 18.3333 25.1989C18.9436 25.1989 19.5289 25.4414 19.9604 25.8729L23.0542 28.9896L35.2 18.8604C35.4317 18.6678 35.6991 18.5227 35.9869 18.4335C36.2747 18.3442 36.5773 18.3125 36.8773 18.3402C37.1774 18.3678 37.469 18.4543 37.7357 18.5947C38.0023 18.7351 38.2386 18.9266 38.4313 19.1583C38.6239 19.3901 38.7689 19.6575 38.8582 19.9452C38.9475 20.233 38.9792 20.5356 38.9515 20.8357C38.9238 21.1357 38.8374 21.4274 38.697 21.694C38.5566 21.9606 38.3651 22.197 38.1333 22.3896Z" fill="#A4AF68"/>
+            </svg>
+          </div>
+          <h3 class="font-heading tracking-success mb-4">{{ 'customer.recover_password.success_title' | t }}</h3>
+          <p class="leading-tight" data-recover-success>{{ 'customer.recover_password.success' | t }}</p>
+          <button class="mt-5 pt-2 text-primary-accent font-extrabold border-b-1 border-b-scheme-text text-sm" type="button" @click="state = 'login'">
+            {{ 'customer.recover_password.cancel' | t }}
+          </button>
+        {% else %}
+          <p class="pt-3">{{ 'customer.recover_password.subtext' | t }}</p>
+          <label for="RecoverEmail" class="mt-4 mb-1 block font-secondary text-sm text-left">
+            {{ 'customer.recover_password.email' | t }}
+          </label>
+          <input type="email"
+                class="w-full bg-transparent border-text-width border-primary-border"
+                name="email"
+                id="RecoverEmail"
+                spellcheck="false"
+                autocomplete="off"
+                autocapitalize="off">
+          <div class="mt-3 pt-2 text-left">
+            <button type="submit" class="block push-btn m-auto  theme-button">
+              <span class="push-btn-surface w-full">{{ 'customer.recover_password.submit' | t }}</span>
+            </button>
+            <button class="mt-3 text-primary-accent font-extrabold border-b-1 border-b-scheme-text text-sm" type="button" @click="state = 'login'">
+              {{ 'customer.recover_password.cancel' | t }}
+            </button>
+          </div>
+        {% endif %}
+      {% endform %}
+    </div>
+    <div class="card-border"></div>
+  </div>
+
+  {% if shop.checkout.guest_login %}
+    <div class="mt-8">
+      <h2 class="text-center mb-2">{{ 'customer.login.guest_title' | t }}</h2>
+
+      {% form 'guest_login' %}
+        <button type="submit" class="push-btn w-full theme-button">
+          <span class="push-btn-surface w-full">{{ 'customer.login.guest_continue' | t }}</span>
+        </button>
+      {% endform %}
+    </div>
+  {%- endif -%}
+</div>
+
+<script src="{{ 'login.js' | asset_url }}" type="module"></script>

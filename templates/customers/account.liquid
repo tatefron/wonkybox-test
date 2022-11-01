@@ -1,0 +1,556 @@
+  <div class="d-flex lign-items-start align-items-start acc-wrap">
+    <div class="nav flex-column nav-pills acc-menu" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="nav-link active" data-toggle="tab" href="#account-details" id="account-details-tab" data-bs-toggle="pill" data-bs-target="#account-details" role="tab" aria-controls="account-details" aria-selected="true">
+        {{ 'customer.account.details' | t }}
+      </a>
+      <a class="nav-link" data-toggle="tab" href="#delivery-schedule" id="delivery-schedule-tab" data-bs-toggle="pill" data-bs-target="#delivery-schedule" role="tab" aria-controls="delivery-schedule" aria-selected="false">Delivery Schedule </a>
+      <a class="nav-link" data-toggle="tab" href="#subscription" id="subscription-tab" data-bs-toggle="pill" data-bs-target="#subscription" role="tab" aria-controls="subscription" aria-selected="false" >Subscriptions</a>
+      <a class="nav-link acc-logout_btn" href="{{ routes.account_logout_url }}">{{ 'layout.customer.log_out' | t }}</a>
+    </div>
+    <div class="tab-content acc-content" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="account-details" role="tabpanel" aria-labelledby="account-details-tab" tabindex="0">
+        <h2 class="acc-title pb-2">{{ 'customer.account.details' | t }}</h2>
+        <div class="input-group d-block">
+          <span class="input-group-text acc-label p-0">Personal Info</span>
+          <textarea class="form-control w-100 acc-info" aria-label="With textarea" rows="3">{{ customer.name }}</textarea>
+        </div>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header pb-3" id="flush-headingOne">
+              <button class="accordion-button p-0 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                {{ 'customer.reset_password.title' | t }}
+              </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body p-0 pb-3">
+{% comment %}   {% form 'reset_customer_password' %}
+
+                  {% if form.errors %}
+                    <div tabindex="-1" data-login-error>{{ form.errors | default_errors }}</div>
+                  {% endif %}
+
+                  <label for="ResetPassword">
+                    {{ 'customer.reset_password.password' | t }} *
+                  </label>
+                  <input type="password"
+                    name="customer[password]"
+                    id="ResetPassword"
+                    class="w-full isRequired {% if form.errors contains 'password' %}border-scheme-accent{% endif %}">
+
+                  <label for="PasswordConfirmation">
+                    {{ 'customer.reset_password.password_confirm' | t }} *
+                  </label>
+                  <input type="password"
+                    name="customer[password_confirmation]"
+                    id="PasswordConfirmation"
+                    class="w-full isRequired {% if form.errors contains 'password_confirmation' %}border-scheme-accent{% endif %}">
+
+
+                  <div class="row">
+                    <div class="extra-padding pt-4 mt-1">
+                      <input type="submit" class="btn btn-primary" style="cursor: pointer" value="Update">
+                      <input type="button" class="btn btn-primary" style="cursor: pointer" value="Discard changes">
+                    </div>
+                  </div>
+                {% endform %}
+{% endcomment %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="input-group d-block">
+          <span class="input-group-text acc-label p-0">Delivery Address</span>
+          <textarea class="form-control w-100 mb-5 acc-address" aria-label="With textarea">40 Omaha Flats Road, Matakana 0986, New Zealand</textarea>
+        </div>
+        <div class="input-group d-block">
+          <span class="input-group-text acc-label p-0">Tell us a safe & sheltered spot to leave your box</span>
+          <div class="position-relative acc-edit">
+            <textarea type="text" name="textarea" required readonly class="form-control w-100 acc-note" aria-label="With textarea">Please leave at the front door</textarea>
+            <input class="position-absolute" name="Edit" type="submit"  style="cursor: pointer" value="Edit">
+            <input type="button" class="d-none" style="cursor: pointer" value="Discard changes">
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade delivery-tab" id="delivery-schedule" role="tabpanel" aria-labelledby="delivery-schedule-tab" tabindex="0">
+        <h2 class="acc-title pb-2">Delivery schedule</h2>
+        <div class="input-group d-block">
+          <span class="input-group-text acc-label p-0">Upcoming deliveries</span>
+        </div>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item disabled">
+            <h2 class="accordion-header pb-3 delivery-title" id="flush-headingOne">
+              <p>Mon, Sep 19th</p> <span>You won’t be billed</span> 
+              <div class="d-flex justify-content-between align-items-end delivery-nav">
+              <span>Too late to cancel skip</span>
+              <button class="accordion-button p-0 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                Skip or pause
+              </button></div>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body p-0">
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion accordion-flush" id="accordionFlushExample_2">
+          <div class="accordion-item">
+            <h2 class="accordion-header pb-3 delivery-title" id="flush-headingTwo">
+              <p>Mon, Sep 19th</p> <span>To be billed on Fri, Sep 23rd</span> 
+              <div class="d-flex justify-content-between align-items-end delivery-nav">
+              <span>What’s in the box?</span>
+              <button class="accordion-button p-0 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseOne">
+                Skip or pause
+              </button></div>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample_2">
+              <div class="accordion-body pt-0">
+                <form>
+                  <div>
+                    <div class="row">
+                      <div class="extra-padding">
+                        <label for="select-why" class="idleLabel">Want to skip your box? Let us know why!</label>
+                        <div class="input-group">
+                          <select class="form-select" name="select-why"  aria-label="Default select">
+                            <option value="Select reason" selected>Select reason</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="extra-padding pt-4 mt-1">
+                        <input type="submit" class="btn btn-primary" style="cursor: pointer" value="Skip">
+                        <input type="button" class="btn btn-primary" style="cursor: pointer" value="Cancel skip">
+                      </div>
+                    </div>
+                  </div>
+                  </form>
+                  <a href="/account/#subscription" class="accordion-button mt-4 pt-1 p-0">
+                    Pause deliveries
+                  </a>
+                  <div class="warning">
+                    <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="https://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_82_1997)">
+                        <path d="M15.1379 0L0.172363 31H30.1034L15.1379 0Z" fill="#FFCE51"/>
+                        <path opacity="0.05" d="M0.328254 30.6771L0.172363 31H30.1034L29.9475 30.6771H0.328254Z" fill="black"/>
+                        <path opacity="0.2" d="M15.1379 0.322917L24.2744 18.9242L15.1379 0L6.00146 18.9242L15.1379 0.322917Z" fill="white"/>
+                        <path d="M13.8906 7.75H16.3849V24.5417H13.8906V7.75Z" fill="white"/>
+                        <path d="M15.1378 28.4166C15.8265 28.4166 16.3849 27.8383 16.3849 27.125C16.3849 26.4116 15.8265 25.8333 15.1378 25.8333C14.449 25.8333 13.8906 26.4116 13.8906 27.125C13.8906 27.8383 14.449 28.4166 15.1378 28.4166Z" fill="white"/>
+                        <path d="M16.3849 24.5417H13.8906L15.1378 25.8333C15.3429 25.8333 15.5448 25.8856 15.7257 25.9858C15.9066 26.0859 16.0609 26.2306 16.1749 26.4073C16.2889 26.5839 16.359 26.7869 16.3791 26.9983C16.3992 27.2097 16.3687 27.423 16.2902 27.6193C16.2117 27.8155 16.0877 27.9887 15.9292 28.1235C15.7706 28.2582 15.5824 28.3504 15.3812 28.3919C15.1801 28.4333 14.9721 28.4227 14.7759 28.361C14.5796 28.2993 14.401 28.1884 14.256 28.0382L17.1157 31H30.1033L21.9084 14.0249L16.3849 7.75V24.5417Z" fill="url(#paint0_linear_82_1997)"/>
+                        <path d="M15.1379 0L0.172363 31H30.1034L15.1379 0Z" fill="url(#paint1_linear_82_1997)"/>
+                      </g>
+                      <defs>
+                      <linearGradient id="paint0_linear_82_1997" x1="11.9105" y1="14.3625" x2="26.7288" y2="28.6698" gradientUnits="userSpaceOnUse">
+                        <stop stop-opacity="0.1"/>
+                        <stop offset="1" stop-opacity="0"/>
+                      </linearGradient>
+                      <linearGradient id="paint1_linear_82_1997" x1="7.24096" y1="15.3" x2="32.1274" y2="26.5045" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="white" stop-opacity="0.2"/>
+                        <stop offset="1" stop-color="white" stop-opacity="0"/>
+                      </linearGradient>
+                      <clipPath id="clip0_82_1997">
+                      <rect width="29.931" height="31" fill="white" transform="translate(0.172363)"/>
+                      </clipPath>
+                      </defs>
+                    </svg>
+                    Skip or pause until cut-off at 12:00 PM on Tuesday September 24, 2022
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion accordion-flush" id="accordionFlushExample_3">
+          <div class="accordion-item">
+            <h2 class="accordion-header pb-3 delivery-title" id="flush-headingThree">
+              <p>Mon, Sep 19th</p> <span>To be billed on Fri, Sep 23rd</span> 
+              <div class="d-flex justify-content-between align-items-end delivery-nav">
+              <span>What’s in the box?</span>
+              <button class="accordion-button p-0 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseOne">
+                Skip or pause
+              </button></div>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample_3">
+              <div class="accordion-body pt-0">
+                <form>
+                  <div>
+                    <div class="row">
+                    <div class="extra-padding">
+                      <label for="select-why" class="idleLabel">Want to skip your box? Let us know why!</label>
+                      <div class="input-group">
+                        <select class="form-select" name="select-why"  aria-label="Default select">
+                          <option selected>Select reason</option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                      </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                      <div class="extra-padding pt-4 mt-1">
+                        <input type="submit" class="btn btn-primary" style="cursor: pointer" value="Skip">
+                        <input type="button" class="btn btn-primary" style="cursor: pointer" value="Cancel skip">
+                      </div>
+                    </div>
+                  </div>
+                  </form>
+                  <a href="/account/#subscription" class="accordion-button mt-4 pt-1 p-0">
+                    Pause deliveries
+                  </a>
+                  <div class="warning">
+                    <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="https://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_82_1997)">
+                        <path d="M15.1379 0L0.172363 31H30.1034L15.1379 0Z" fill="#FFCE51"/>
+                        <path opacity="0.05" d="M0.328254 30.6771L0.172363 31H30.1034L29.9475 30.6771H0.328254Z" fill="black"/>
+                        <path opacity="0.2" d="M15.1379 0.322917L24.2744 18.9242L15.1379 0L6.00146 18.9242L15.1379 0.322917Z" fill="white"/>
+                        <path d="M13.8906 7.75H16.3849V24.5417H13.8906V7.75Z" fill="white"/>
+                        <path d="M15.1378 28.4166C15.8265 28.4166 16.3849 27.8383 16.3849 27.125C16.3849 26.4116 15.8265 25.8333 15.1378 25.8333C14.449 25.8333 13.8906 26.4116 13.8906 27.125C13.8906 27.8383 14.449 28.4166 15.1378 28.4166Z" fill="white"/>
+                        <path d="M16.3849 24.5417H13.8906L15.1378 25.8333C15.3429 25.8333 15.5448 25.8856 15.7257 25.9858C15.9066 26.0859 16.0609 26.2306 16.1749 26.4073C16.2889 26.5839 16.359 26.7869 16.3791 26.9983C16.3992 27.2097 16.3687 27.423 16.2902 27.6193C16.2117 27.8155 16.0877 27.9887 15.9292 28.1235C15.7706 28.2582 15.5824 28.3504 15.3812 28.3919C15.1801 28.4333 14.9721 28.4227 14.7759 28.361C14.5796 28.2993 14.401 28.1884 14.256 28.0382L17.1157 31H30.1033L21.9084 14.0249L16.3849 7.75V24.5417Z" fill="url(#paint0_linear_82_1997)"/>
+                        <path d="M15.1379 0L0.172363 31H30.1034L15.1379 0Z" fill="url(#paint1_linear_82_1997)"/>
+                      </g>
+                      <defs>
+                      <linearGradient id="paint0_linear_82_1997" x1="11.9105" y1="14.3625" x2="26.7288" y2="28.6698" gradientUnits="userSpaceOnUse">
+                        <stop stop-opacity="0.1"/>
+                        <stop offset="1" stop-opacity="0"/>
+                      </linearGradient>
+                      <linearGradient id="paint1_linear_82_1997" x1="7.24096" y1="15.3" x2="32.1274" y2="26.5045" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="white" stop-opacity="0.2"/>
+                        <stop offset="1" stop-color="white" stop-opacity="0"/>
+                      </linearGradient>
+                      <clipPath id="clip0_82_1997">
+                      <rect width="29.931" height="31" fill="white" transform="translate(0.172363)"/>
+                      </clipPath>
+                      </defs>
+                    </svg>
+                    Skip or pause until cut-off at 12:00 PM on Tuesday September 24, 2022
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>   
+        <div class="accordion accordion-flush" id="accordionFlushExample_4">
+          <div class="accordion-item cancel-skip">
+            <h2 class="accordion-header pb-3 delivery-title" id="flush-headingFour">
+              <p>Mon, Oct 24th</p> <span>You won’t be billed</span> 
+              <div class="d-flex justify-content-between align-items-end delivery-nav">
+              <span>What’s in the box?</span>
+              <button class="accordion-button p-0 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseOne">
+                Cancel skip
+              </button></div>
+            </h2>
+            <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample_4">
+              <div class="accordion-body pt-0">
+                <form>
+                  <div class="passwordDiv">
+                    <div class="row">
+                    <div class="extra-padding">
+                      <label for="select-why" class="idleLabel">Want to skip your box? Let us know why!</label>
+                      <div class="input-group">
+                        <select class="form-select" name="select-why"  aria-label="Default select">
+                          <option selected>Select reason</option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                      </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                      <div class="extra-padding pt-4 mt-1">
+                        <input type="submit" class="btn btn-primary" style="cursor: pointer" value="Skip">
+                        <input type="button" class="btn btn-primary" style="cursor: pointer" value="Cancel skip">
+                      </div>
+                    </div>
+                  </div>
+                  </form>
+                  <a href="/account/#subscription" class="accordion-button mt-4 pt-1 p-0">
+                    Pause deliveries
+                  </a>
+                  <div class="warning">
+                    <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="https://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_82_1997)">
+                        <path d="M15.1379 0L0.172363 31H30.1034L15.1379 0Z" fill="#FFCE51"/>
+                        <path opacity="0.05" d="M0.328254 30.6771L0.172363 31H30.1034L29.9475 30.6771H0.328254Z" fill="black"/>
+                        <path opacity="0.2" d="M15.1379 0.322917L24.2744 18.9242L15.1379 0L6.00146 18.9242L15.1379 0.322917Z" fill="white"/>
+                        <path d="M13.8906 7.75H16.3849V24.5417H13.8906V7.75Z" fill="white"/>
+                        <path d="M15.1378 28.4166C15.8265 28.4166 16.3849 27.8383 16.3849 27.125C16.3849 26.4116 15.8265 25.8333 15.1378 25.8333C14.449 25.8333 13.8906 26.4116 13.8906 27.125C13.8906 27.8383 14.449 28.4166 15.1378 28.4166Z" fill="white"/>
+                        <path d="M16.3849 24.5417H13.8906L15.1378 25.8333C15.3429 25.8333 15.5448 25.8856 15.7257 25.9858C15.9066 26.0859 16.0609 26.2306 16.1749 26.4073C16.2889 26.5839 16.359 26.7869 16.3791 26.9983C16.3992 27.2097 16.3687 27.423 16.2902 27.6193C16.2117 27.8155 16.0877 27.9887 15.9292 28.1235C15.7706 28.2582 15.5824 28.3504 15.3812 28.3919C15.1801 28.4333 14.9721 28.4227 14.7759 28.361C14.5796 28.2993 14.401 28.1884 14.256 28.0382L17.1157 31H30.1033L21.9084 14.0249L16.3849 7.75V24.5417Z" fill="url(#paint0_linear_82_1997)"/>
+                        <path d="M15.1379 0L0.172363 31H30.1034L15.1379 0Z" fill="url(#paint1_linear_82_1997)"/>
+                      </g>
+                      <defs>
+                      <linearGradient id="paint0_linear_82_1997" x1="11.9105" y1="14.3625" x2="26.7288" y2="28.6698" gradientUnits="userSpaceOnUse">
+                        <stop stop-opacity="0.1"/>
+                        <stop offset="1" stop-opacity="0"/>
+                      </linearGradient>
+                      <linearGradient id="paint1_linear_82_1997" x1="7.24096" y1="15.3" x2="32.1274" y2="26.5045" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="white" stop-opacity="0.2"/>
+                        <stop offset="1" stop-color="white" stop-opacity="0"/>
+                      </linearGradient>
+                      <clipPath id="clip0_82_1997">
+                      <rect width="29.931" height="31" fill="white" transform="translate(0.172363)"/>
+                      </clipPath>
+                      </defs>
+                    </svg>
+                    Skip or pause until cut-off at 12:00 PM on Tuesday September 24, 2022
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>       
+      </div>
+      <div class="tab-pane fade" id="subscription" role="tabpanel" aria-labelledby="subscription-tab" tabindex="0">
+        <h2 class="acc-title pb-2">Subscriptions</h2>
+        <div class="input-group d-block">
+          <span class="input-group-text acc-label p-0">manage Subscriptions</span>
+        </div>
+        <div class="subscriptions-wrap">
+          <div class="subscriptions-item">
+            <div class="row align-items-center">
+              <div class="col-4 justify-content-between d-flex">
+                <div class="form-group subscription-checkbox d-flex align-items-center">
+                  <input type="checkbox" id="subscription-checkbox" checked>
+                  <label class="p-0" for="subscription-checkbox"></label>
+                </div>
+                {{ 'Subscriptions-1.png' | asset_url | img_tag: 'img' }}
+              </div>
+              <div class="subscription-name col-5">Fruit & Veg Box</div>
+              <div class="subscription-price col-3">$32.00</div>
+            </div>
+            <form class="mt-3">
+              <div>
+                <div class="row">
+                  <div class="extra-padding col-md-6">
+                    <label for="amount" class="idleLabel">Amount</label>
+                    <div class="input-group">
+                      <input class="form-control" type="number" name="amount" min="1" max="100">
+                    </div>
+                  </div>
+                  <div class="extra-padding col-md-6">
+                    <label for="select-why" class="idleLabel">Frequency</label>
+                    <div class="input-group">
+                      <select class="form-select" name="select-why"  aria-label="Default select">
+                        <option selected>Select frequency</option>
+                        <option value="1">Weekly</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="extra-padding pt-4 mt-1">
+                    <input type="submit" class="btn btn-primary" style="cursor: pointer" value="Update">
+                    <input type="button" class="btn btn-primary" style="cursor: pointer" value="Discard changes">
+                  </div>
+                </div>
+              </div>
+            </form>
+              <!-- <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header pb-3" id="flush-headingOne">
+                    <button class="accordion-button acc-label p-0 mb-0 pt-4 mt-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                      Need a breaK?
+                    </button>
+                  </h2>
+                  <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body p-0 pb-3">
+                      <form>
+                        <div>
+                          <div class="row">
+                            <div class="extra-padding">
+                              <label for="select-pause" class="idleLabel pt-0">Select pause duration</label>
+                              <div class="input-group">
+                                <select class="form-select" name="select-pause"  aria-label="Default select">
+                                  <option selected>Select reason</option>
+                                  <option value="1">1 month</option>
+                                  <option value="2">2 month</option>
+                                  <option value="3">3 month</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="warning mt-4 p-0">
+                            Your subscription will automatically resume after Oct 23rd
+                          </div>
+                          <div class="row">
+                            <div class="extra-padding pt-4 mt-1">
+                              <input type="submit" class="btn btn-primary w-100" style="cursor: pointer" value="Confirm pause">
+                            </div>
+                          </div>
+                        </div>
+                        </form>
+                    </div>
+                  </div>
+                  <div class="warning mt-3">
+                    You can skip upcoming orders or temporarily pause your subscription.
+                  </div>
+                </div>
+              </div> -->
+              <div class="input-group d-block">
+                <span class="input-group-text acc-label p-0 pt-3">Need a breaK?</span>
+              </div>
+              <div class="warning mt-3">
+                You can skip upcoming orders or temporarily pause your subscription.
+              </div>
+              <a href="/account/#subscription" class="accordion-button mt-3 pt-1 p-0">
+                Skip upcoming order
+              </a>
+              <div class="accordion accordion-flush" id="accordionPauseCancelSubscription">
+                <div class="accordion-item">
+                  <div id="flush-collapsePauseCancelSubscription" class="accordion-collapse collapse" aria-labelledby="flush-headingPauseCancelSubscription" data-bs-parent="#accordionPauseCancelSubscription">
+                    <div class="accordion-body p-0 pb-3">
+                      <form>
+                        <div>
+                          <div class="row">
+                            <div class="extra-padding">
+                              <label for="select-pause" class="idleLabel pt-0">Select pause duration</label>
+                              <div class="input-group">
+                                <select class="form-select" name="select-pause"  aria-label="Default select">
+                                  <option selected>Select reason</option>
+                                  <option value="1">1 month</option>
+                                  <option value="2">2 month</option>
+                                  <option value="3">3 month</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="warning mt-4 p-0">
+                            Your subscription will automatically resume after Oct 23rd
+                          </div>
+                          <div class="row">
+                            <div class="extra-padding pt-4 mt-1">
+                              <input type="submit" class="btn btn-primary w-100" style="cursor: pointer" value="Confirm pause">
+                            </div>
+                          </div>
+                        </div>
+                        </form>
+                    </div>
+                  </div>
+                  <h2 class="accordion-header" id="flush-headingPauseCancelSubscription">
+                    <button class="accordion-button p-0 mb-0 pt-1 mt-1 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsePauseCancelSubscription" aria-expanded="false" aria-controls="flush-collapsePauseCancelSubscription">
+                      Pause or cancel subscription
+                    </button>
+                  </h2>
+                </div>
+              </div>
+              <div class="accordion accordion-flush" id="accordionCancelSubscription">
+                <div class="accordion-item">
+                  <div id="flush-collapseCancelSubscription" class="accordion-collapse collapse" aria-labelledby="flush-headingCancelSubscription" data-bs-parent="#accordionCancelSubscription">
+                    <div class="accordion-body p-0 pb-3">
+                      <div class="input-group d-block">
+                        <span class="input-group-text acc-label mb-0 p-0">Cancel Subscription</span>
+                      </div>
+                      <div class="warning mt-3 mb-4">
+                        <b class="d-block mb-4">You are cancelling your subscription</b>
+                        You’ll loose the convenience of having curated groceries shipped to your door each week. All upcoming orders and charges will stop.
+                      </div>
+                      <form>
+                        <div>
+                          <div class="row">
+                            <div class="extra-padding">
+                              <label for="select-pause" class="idleLabel pt-0">We’d appreciate feedback</label>
+                              <div class="input-group">
+                                <select class="form-select" name="select-pause"  aria-label="Default select">
+                                  <option selected>Select cancellation reason</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="extra-padding pt-4 mt-1">
+                              <input type="submit" class="btn btn-primary w-100" style="cursor: pointer" value="Confirm pause">
+                            </div>
+                          </div>
+                        </div>
+                        </form>
+                    </div>
+                  </div>
+                  <h2 class="accordion-header pb-3" id="flush-headingCancelSubscription">
+                    <button class="accordion-button mb-3 pb-0 p-0 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseCancelSubscription" aria-expanded="false" aria-controls="flush-collapseCancelSubscription">
+                       Cancel subscription
+                    </button>
+                  </h2>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="section-content py-section-vertical-spacing px-section max-w-site account-NEW" data-color-scheme="primary">
+  <div class="mb-10 lg:flex lg:items-center lg:justify-between">
+    <h1 class="font-heading heading-template mb-2.5">{{ 'customer.account.title' | t }}</h1>
+    <div class="text-sm">
+      {% if customer.first_name != blank %}
+        {% capture first_name %}<a class="" href="{{ routes.account_url }}">{{ customer.first_name }}</a>{% endcapture %}
+        {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
+      {% else %}
+        <a class="" href="{{ routes.account_url }}">{{ 'layout.customer.account' | t }}</a>
+      {% endif %}</span> /
+      <a class="inline-block text-primary-accent mb-2" href="{{ routes.account_logout_url }}">{{ 'layout.customer.log_out' | t }}</a>
+    </div>
+  </div>
+
+  <div class="lg:grid grid-cols-1 lg:grid-cols-12 max-w-screen">
+    <div class="lg:col-span-8">
+      <h2 class="font-heading heading-secondary mb-2.5">{{ 'customer.orders.title' | t }}</h2>
+
+      {% paginate customer.orders by 20 %}
+        {% if customer.orders.size != 0 %}
+          <table class="responsive-table text-sm lg:text-base">
+            <thead class="text-sm">
+              <tr>
+                <th scope="col">{{ 'customer.orders.order_number' | t }}</th>
+                <th scope="col">{{ 'customer.orders.date' | t }}</th>
+                <th scope="col">{{ 'customer.orders.payment_status' | t }}</th>
+                <th scope="col">{{ 'customer.orders.fulfillment_status' | t }}</th>
+                <th scope="col">{{ 'customer.orders.total' | t }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for order in customer.orders %}
+                <tr class="responsive-table-row lg:border-none">
+                  <td class="text-primary-accent" data-label="{{ 'customer.orders.order_number' | t }}"><span class="underline">{{ order.name | link_to: order.customer_url }}</span></td>
+                  <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
+                  <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+                  <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                  <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p>{{ 'customer.orders.none' | t }}</p>
+        {% endif %}
+
+        {% if paginate.pages > 1 %}
+          {% render 'pagination' with paginate, section_color: 'primary' %}
+        {% endif %}
+
+      {% endpaginate %}
+    </div>
+
+    <div class="mt-8 lg:mt-0 lg:col-span-3 lg:col-start-10 mb-2">
+      <div class="card-container">
+        <div class="card p-5 relative z-shape-divider">
+          <h2 class="font-heading heading-secondary mb-2.5">{{ 'customer.account.details' | t }}</h2>
+          <div class="mb-4">{{ customer.default_address | format_address }}</div>
+          {%- capture address_link -%}{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }}){%- endcapture -%}
+          <a class="inline-block push-btn w-full theme-button" href="{{ routes.account_addresses_url }}">
+            <span class="push-btn-surface w-full">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</span>
+          </a>
+        </div>
+        <div class="card-border"></div>
+      </div>
+    </div>
+  </div>
+</div>
