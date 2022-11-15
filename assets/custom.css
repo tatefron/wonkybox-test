@@ -320,6 +320,9 @@ input:-internal-autofill-selected {
     border-radius: 30px;
     padding: 25px 25px 30px;
 }
+.subscriptions-item .product {
+  color: transparent;
+}
 .subscriptions-item .accordion .acc-label {
     border-bottom: unset;
 }
@@ -338,6 +341,7 @@ input:-internal-autofill-selected {
     font-family: 'Beefcakes';
     letter-spacing: 0.1em;
     text-align: center;
+    color: #333300;
     font-weight: 400;
     font-size: 16px;
 }
@@ -345,12 +349,15 @@ input:-internal-autofill-selected {
     line-height: 21px;
     text-align: right;
     font-size: 20px;
+    color: #333300;
 }
 
 
 
 
-
+.subscription-checkbox {
+  position: relative;
+}
 .subscription-checkbox input {
     position: absolute;
     margin-bottom: 0;

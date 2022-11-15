@@ -386,11 +386,47 @@
                 const parsedData = JSON.parse(data);
 
                 jQuery('.delivery-time').html(parsedData[0].next_billing);
-             
-                jQuery('.subscription-name').html(parsedData[0].items[0].title);
-                //jQuery('input[name="amount"]').val(parsedData[0].items[0].quantity);
-                jQuery('.subscriptions-img').css('background-image', 'url("' + parsedData[0].items[0].image_link + '")');
-                jQuery('.subscription-price').html(parsedData[0].items[0].price);
+
+                var ShoppingCart = (function($) {
+                 
+
+                  var productsEl = document.querySelector(".products");              
+
+                  var products =  JSON.parse(data),
+                  productsInCart = [];
+                  
+                  var generateProductList = function() {
+                    parsedData.forEach(function(item) {
+                      var productEl = document.createElement("div");
+                      productEl.className = "product";
+                      var itemTitles = item.items.map(function(item) {
+                        return `
+                                
+                                    <div class="row subscription-checkbox align-items-center justify-content-start">
+                                      <input type="checkbox" checked>
+                                      <label class="col-1 p-0" for="subscription-checkbox"></label>
+                                      <div class="subscriptions-img col-3" style="background-image: url(${item.image_link})"></div>
+                                      <div class="subscription-name col-6">${item.title}</div>
+                                      <div class="subscription-price col-2">${item.price}</div>  
+                                    </div>                    
+                                 
+                              `;
+                      });              
+                      productEl.innerHTML = `
+                                                ${ itemTitles || ' ' }
+                                              `;
+                      productsEl.appendChild(productEl);
+                    });
+                  }
+
+                  var init = function() {
+                    generateProductList();
+                  }              
+                  return {
+                    init: init
+                  };
+                })(jQuery);
+                ShoppingCart.init();
               }
           });
         });

@@ -20,23 +20,11 @@
               Next box is arriving on <span class="delivery-time"></span>.
               <a href="/account/#delivery-schedule">View delivery schedule</a>
             </div>
-
-            <div class="products"></div>
+            {% comment %} {{ 'Subscriptions-1.png' | asset_url | img_tag: 'img' }} {% endcomment %}
+            
             <form>
               <div>
-                <div class="row align-items-center">
-                  <div class="col-4 justify-content-between d-flex pr-2">
-                    <div class="form-group subscription-checkbox d-flex align-items-center">
-                      <input type="checkbox" checked>
-                      <label class="p-0" for="subscription-checkbox"></label>
-                    </div>
-
-                    {% comment %} {{ 'Subscriptions-1.png' | asset_url | img_tag: 'img' }} {% endcomment %}
-                    <div class="subscriptions-img"></div>
-                  </div>
-                  <div class="subscription-name col-5"></div>
-                  <div class="subscription-price col-3"></div>
-                </div>
+                <div class="products"></div>
                 <div class="row ">
                   <div class="extra-padding col-md-12 select-frequency">
                     <label for="select-frequency" class="idleLabel">Frequency</label>
@@ -63,49 +51,7 @@
                   </div>
                 </div>
               </div>
-            </form>
-            <form>
-              <div>
-                <div class="row align-items-center">
-                  <div class="col-4 justify-content-between d-flex pr-2">
-                    <div class="form-group subscription-checkbox d-flex align-items-center">
-                      <input type="checkbox" checked>
-                      <label class="p-0" for="subscription-checkbox"></label>
-                    </div>
-
-                    {% comment %} {{ 'Subscriptions-1.png' | asset_url | img_tag: 'img' }} {% endcomment %}
-                    <div class="subscriptions-img"></div>
-                  </div>
-                  <div class="subscription-name col-5"></div>
-                  <div class="subscription-price col-3"></div>
-                </div>
-                <div class="row ">
-                  <div class="extra-padding col-md-12 select-frequency">
-                    <label for="select-frequency" class="idleLabel">Frequency</label>
-                    <div class="input-group">
-                      <select class="form-select" name="select-frequency"  aria-label="Default select">
-                        <option selected>Select frequency</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>                
-                <div class="row">
-                  <div class="extra-padding col-md-6 d-none">
-                    <label for="amount" class="idleLabel">Amount</label>
-                    <div class="input-group">
-                      <input class="form-control" type="number" name="amount" min="1" max="100" value="">
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="row">
-                  <div class="extra-padding pt-3 mt-2">
-                    <input type="submit" class="btn btn-primary" style="cursor: pointer" value="Update">
-                    <input type="button" class="btn btn-primary" style="cursor: pointer" value="Discard changes">
-                  </div>
-                </div>
-              </div>
-            </form>            
+            </form>           
               <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item">
                   <h2 class="accordion-header pb-3" id="flush-headingExample">
