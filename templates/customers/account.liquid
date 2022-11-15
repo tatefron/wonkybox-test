@@ -2,7 +2,7 @@
     <div class="nav flex-column nav-pills acc-menu" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <div class="deliveryAddress_tab">Delivery Address:<span class="deliveryAddress"></span></div>
       <a class="nav-link" data-toggle="tab" href="#subscription" id="subscription-tab" data-bs-toggle="pill" data-bs-target="#subscription" role="tab" aria-controls="subscription" aria-selected="false" >Subscriptions</a>
-      <a class="nav-link" data-toggle="tab" href="#delivery-schedule" id="delivery-schedule-tab" data-bs-toggle="pill" data-bs-target="#delivery-schedule" role="tab" aria-controls="delivery-schedule" aria-selected="false">Delivery Schedule </a>
+      <a class="nav-link hidden" data-toggle="tab" href="#delivery-schedule" id="delivery-schedule-tab" data-bs-toggle="pill" data-bs-target="#delivery-schedule" role="tab" aria-controls="delivery-schedule" aria-selected="false">Delivery Schedule </a>
       <a class="nav-link active" data-toggle="tab" href="#account-details" id="account-details-tab" data-bs-toggle="pill" data-bs-target="#account-details" role="tab" aria-controls="account-details" aria-selected="true">
         {{ 'customer.account.details' | t }}
       </a>
@@ -15,43 +15,18 @@
           <span class="input-group-text acc-label p-0">manage Subscriptions</span>
         </div>
         <div class="subscriptions-wrap">
-          <div class="subscriptions-item">
-            <div class="mark-bg">
-              Next box is arriving on <span class="delivery-time"></span>.
-              <a href="/account/#delivery-schedule">View delivery schedule</a>
-            </div>
             {% comment %} {{ 'Subscriptions-1.png' | asset_url | img_tag: 'img' }} {% endcomment %}
-            
-            <form>
-              <div>
-                <div class="products"></div>
-                <div class="row ">
-                  <div class="extra-padding col-md-12 select-frequency">
-                    <label for="select-frequency" class="idleLabel">Frequency</label>
-                    <div class="input-group">
-                      <select class="form-select" name="select-frequency"  aria-label="Default select">
-                        <option selected>Select frequency</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>                
-                <div class="row">
-                  <div class="extra-padding col-md-6 d-none">
-                    <label for="amount" class="idleLabel">Amount</label>
-                    <div class="input-group">
-                      <input class="form-control" type="number" name="amount" min="1" max="100" value="">
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="row">
-                  <div class="extra-padding pt-3 mt-2">
-                    <input type="submit" class="btn btn-primary" style="cursor: pointer" value="Update">
-                    <input type="button" class="btn btn-primary" style="cursor: pointer" value="Discard changes">
+              
+<!--               
+              <div class="row">
+                <div class="extra-padding col-md-6">
+                  <label for="amount" class="idleLabel">Amount</label>
+                  <div class="input-group">
+                    <input class="form-control" type="number" name="amount" min="1" max="100" value="">
                   </div>
                 </div>
               </div>
-            </form>           
+       
               <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item">
                   <h2 class="accordion-header pb-3" id="flush-headingExample">
@@ -60,6 +35,41 @@
                     </button>
                   </h2>
                   <div id="flush-collapseExample" class="accordion-collapse collapse" aria-labelledby="flush-headingExample" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body p-0 pb-3">
+                      <form>
+                        <div>
+                          <div class="row">
+                            <div class="extra-padding">
+                              <label for="select-pause" class="idleLabel pt-0">Select pause duration</label>
+                              <div class="input-group">
+                                <select class="form-select" name="select-pause"  aria-label="Default select">
+                                  <option selected>Select reason</option>
+                                  <option value="1">1 month</option>
+                                  <option value="2">2 month</option>
+                                  <option value="3">3 month</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="warning mt-4 p-0"></div>
+                          <div class="row">
+                            <div class="extra-padding pt-4 mt-1">
+                              <input type="submit" class="btn btn-primary w-100" style="cursor: pointer" value="Confirm pause" disabled>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="warning mt-3">
+                    You can skip upcoming orders or temporarily pause your subscription.
+                  </div>
+                </div>
+              </div> -->
+<!-- 
+              <div class="accordion accordion-flush" id="accordionPauseCancelSubscription">
+                <div class="accordion-item">
+                  <div id="flush-collapsePauseCancelSubscription" class="accordion-collapse collapse" aria-labelledby="flush-headingPauseCancelSubscription" data-bs-parent="#accordionPauseCancelSubscription">
                     <div class="accordion-body p-0 pb-3">
                       <form class="m-0">
                         <div>
@@ -80,54 +90,12 @@
                             </div>
                           </div>
                         </div>
-                        </form>
+                      </form>
                     </div>
                   </div>
-                  <div class="warning mt-3">
-                    You can skip upcoming orders or temporarily pause your subscription.
-                  </div>
-                </div>
-              </div> 
-              <!--<div class="input-group d-block">
-                <span class="input-group-text acc-label p-0 pt-3">Need a breaK?</span>
-              </div>
-              <div class="warning mt-3">
-                You can skip upcoming orders or temporarily pause your subscription.
-              </div>-->
-              <a href="/account/#subscription" class="accordion-button mt-3 pt-1 p-0">
-                Skip upcoming order
-              </a>
-              <div class="accordion accordion-flush" id="accordionPauseCancelSubscription">
-                <div class="accordion-item">
-                  <div id="flush-collapsePauseCancelSubscription" class="accordion-collapse collapse" aria-labelledby="flush-headingPauseCancelSubscription" data-bs-parent="#accordionPauseCancelSubscription">
-                    <div class="accordion-body p-0 pb-3">
-                      <form>
-                        <div>
-                          <div class="row">
-                            <div class="extra-padding">
-                              <label for="select-pause" class="idleLabel pt-0">Select pause duration</label>
-                              <div class="input-group">
-                                <select class="form-select" name="select-pause"  aria-label="Default select">
-                                  <option selected>Select reason</option>
-                                  <option value="1">1 month</option>
-                                  <option value="2">2 month</option>
-                                  <option value="3">3 month</option>
-                                </select>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="warning mt-4 p-0">
-                            Your subscription will automatically resume after Oct 23rd
-                          </div>
-                          <div class="row">
-                            <div class="extra-padding pt-4 mt-1">
-                              <input type="submit" class="btn btn-primary w-100" style="cursor: pointer" value="Confirm pause">
-                            </div>
-                          </div>
-                        </div>
-                        </form>
-                    </div>
-                  </div>
+                  <a href="/account/#delivery-schedule" class="accordion-button mt-3 pt-1 p-0">
+                    Skip upcoming order
+                  </a>
                   <h2 class="accordion-header" id="flush-headingPauseCancelSubscription">
                     <button class="accordion-button p-0 mb-0 pt-1 mt-1 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsePauseCancelSubscription" aria-expanded="false" aria-controls="flush-collapsePauseCancelSubscription">
                       Pause or cancel subscription
@@ -163,7 +131,7 @@
                           </div>
                           <div class="row">
                             <div class="extra-padding pt-4 mt-1">
-                              <input type="submit" class="btn btn-primary w-100" style="cursor: pointer" value="Confirm pause">
+                              <input type="submit" class="btn btn-primary w-100" style="cursor: pointer" value="Confirm pause" disabled>
                             </div>
                           </div>
                         </div>
@@ -176,8 +144,7 @@
                     </button>
                   </h2>
                 </div>
-              </div>
-          </div>
+              </div>-->          
         </div>
       </div>
       <div class="tab-pane fade delivery-tab" id="delivery-schedule" role="tabpanel" aria-labelledby="delivery-schedule-tab" tabindex="0">
@@ -418,9 +385,9 @@
         </div>
         <div class="accordion accordion-flush" id="accordionFlushExample_5">
           <div class="accordion-item">
-            <h2 class="accordion-header pb-3" id="flush-headingFive">
+            <h2 class="accordion-header" id="flush-headingFive">
               <button class="accordion-button p-0 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-                {{ 'customer.reset_password.title' | t }}
+                Edit payment details
               </button>
             </h2>
             <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample_5">
@@ -462,7 +429,7 @@
         </div>
         <div class="input-group d-block">
           <span class="input-group-text acc-label p-0">Delivery Address</span>
-          <textarea class="form-control w-100 mb-5 acc-address deliveryAddress" aria-label="With textarea"></textarea>
+          <textarea class="form-control w-100 acc-address deliveryAddress" aria-label="With textarea"></textarea>
         </div>
         <div class="input-group d-block">
           <span class="input-group-text acc-label p-0">Tell us a safe & sheltered spot to leave your box</span>
