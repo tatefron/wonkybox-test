@@ -113,6 +113,8 @@ window['ThemeSection_ProductQuickBuy'] = ({
       config.headers['X-Requested-With'] = 'XMLHttpRequest';
       delete config.headers['Content-Type'];
 
+      debugger;
+
       fetch(`${theme.routes.cart_add_url}`, config)
         .then((res) => res.json())
         .then((data) => {

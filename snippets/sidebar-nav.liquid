@@ -139,12 +139,10 @@
 
       {% if shop.customer_accounts_enabled %}
         <ul class="space-y-1.5">
-          <li>
-            <a href="/a/account/login">Login</a>
-          </li>
-          {% comment %}
           {% if customer %}
-            
+            <li>
+              <a href="{{ routes.account_url }}">{{ 'layout.customer.account' | t }}</a>
+            </li>
             <li>
               {{ 'layout.customer.log_out' | t | customer_logout_link }}
             </li>
@@ -156,7 +154,6 @@
               {{ 'layout.customer.create_account' | t | customer_register_link }}
             </li>
           {% endif %}
-        {% endcomment %}
         </ul>
       {% endif %}
 

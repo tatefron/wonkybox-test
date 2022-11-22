@@ -7,31 +7,6 @@ Make sure to uncomment out the line in theme.liquid so that this css file is loa
 For more information check out this help guide:
 https://help.switchthemes.co/shapes/advanced/custom-css.html
 */
-
- 
-  /* Two Column Blog Pages */
-
-.one-half-column-left {
-width:48%;
-float:left;
-}
-
-.one-half-column-right {
-width:48%;
-float:right;
-}
-
-@media only screen and (max-width: 600px) {
-.one-half-column-left, .one-half-column-right, 
-.one-third-column, .one-third-column-last {
-float:none;
-width:100%;
-margin-right:0;
-}
-}
-
-/* Two Column Blog Pages */
-
 a:hover {
   color: inherit;
 }
@@ -105,7 +80,7 @@ input:-internal-autofill-selected {
     font-weight: 400;
 }
 .acc-content {
-    padding: 50px 58px 40px;
+    padding: 50px 58px 60px;
 }
 .acc-content h2.acc-title {
     letter-spacing: 0.05em;
@@ -116,7 +91,7 @@ input:-internal-autofill-selected {
     background-color: transparent;
     letter-spacing: 0.1em;
     white-space: normal;
-    margin: 30px 0 28px;
+    margin: 30px 0;
     line-height: 154%;
     text-align: left;
     color: #A4AF68;
@@ -127,12 +102,12 @@ input:-internal-autofill-selected {
 .acc-content textarea {
     background: rgba(164, 175, 104, 0.2);
     border-radius: 30px!important;
-    padding: 12px 12px 10px;
     min-height: 106px;
     line-height: 38px;
     font-weight: 600;
     color: #101010;
     font-size: 20px;
+    padding: 12px;
 }
 .acc-content textarea {
     margin-bottom: 35px!important;
@@ -221,32 +196,22 @@ input:-internal-autofill-selected {
     border-radius: 10px;
     box-shadow: unset;
 }
+
 .acc-wrap input[type="submit"],
 .acc-content .acc-edit_active input[name="Edit"],
 .acc-wrap input[type="button"]:not([name="Edit"])  {
     border-color: #ECBF4B;
     background: #ECBF4B;
     border-radius: 20px;
-    padding: 9px 18px;
+    padding: 10px 18px;
     margin-right: 15px;
     line-height: 18px;
     border-width: 2px;
     color: #101010;
     font-size: 20px;
-    cursor: pointer;
-}
-.acc-wrap .editSubscription input[type="submit"] {
-  max-width: 192px;
-  width: 100%;
-}
-.acc-wrap .editSubscription input[type=button]:not([name="Edit"]) {
-  max-width: 112px;
-  width: 100%;
 }
 .acc-content .accordion-button,
-.acc-content input[name="Edit"],
-.buttonEditSubscription:focus,
-.buttonEditSubscription {
+.acc-content input[name="Edit"] {
     border-bottom-color: #333300!important;
     border-bottom: 1px solid #333300;
     border-bottom-width: 1px;
@@ -283,13 +248,13 @@ input:-internal-autofill-selected {
     letter-spacing: -.06rem;
 }
 .acc-content .delivery-tab .warning,
-.subscriptions-item .editSubscription .warning {
+.acc-content .subscriptions-item #accordionCancelSubscription .warning {
     background: rgba(255, 206, 81, 0.2);
 }
 .acc-content .delivery-tab .warning {
     padding: 18px 15px 20px 76px;
 }
-.subscriptions-item .editSubscription .warning {
+.acc-content .subscriptions-item #accordionCancelSubscription .warning {
     padding: 28px 20px 25px;
     line-height: 21px;
 }
@@ -352,12 +317,17 @@ input:-internal-autofill-selected {
 .subscriptions-item {
     background: rgba(164, 175, 104, 0.05);
     border: 1px solid #333300;
-    padding: 25px 25px 30px;
-    margin-bottom: 30px;
     border-radius: 30px;
+    padding: 25px 25px 30px;
+}
+.subscriptions-item .product {
+  color: transparent;
 }
 .subscriptions-item .accordion .acc-label {
     border-bottom: unset;
+}
+.subscriptions-item form {
+    margin-top: 40px;
 }
 .acc-content .subscriptions-item .accordion .acc-label:focus, 
 .acc-content .subscriptions-item .accordion .acc-label:not(.collapsed) {
@@ -370,7 +340,7 @@ input:-internal-autofill-selected {
     text-transform: uppercase;
     font-family: 'Beefcakes';
     letter-spacing: 0.1em;
-    text-align: left;
+    text-align: center;
     color: #333300;
     font-weight: 400;
     font-size: 16px;
@@ -381,6 +351,10 @@ input:-internal-autofill-selected {
     font-size: 20px;
     color: #333300;
 }
+
+
+
+
 .subscription-checkbox {
   position: relative;
 }
@@ -393,11 +367,13 @@ input:-internal-autofill-selected {
     opacity: 0;
     padding: 0;
     z-index: 1;
-  }  
+  }
+  
   .subscription-checkbox label {
     position: relative;
     cursor: pointer;
-  }  
+  }
+  
   .subscription-checkbox label:before {
     content:'';
     background-color: transparent;
@@ -408,7 +384,8 @@ input:-internal-autofill-selected {
     position: relative;
     vertical-align: middle;
     cursor: pointer;
-  }  
+  }
+  
   .subscription-checkbox input:checked + label:after {
     content: '';
     display: block;
@@ -419,6 +396,16 @@ input:-internal-autofill-selected {
     width: 20px;
     height: 20px;
   }
+
+
+
+
+
+
+
+
+
+
   .select-hidden {
     display: none;
     visibility: hidden;
@@ -443,7 +430,7 @@ input:-internal-autofill-selected {
     border-radius: 10px;
     width: 100%;
     white-space: nowrap;
-    top: 0;
+  
   }
   .select-styled:after {
     content:"";
@@ -507,7 +494,6 @@ input:-internal-autofill-selected {
     background: rgba(164, 175, 104, 0.2);
     padding: 25px 15px 20px 20px;
     border-radius: 10px;
-    margin-bottom: 40px;
     line-height: 21px;
     color: #101010;
     font-weight: 400;
@@ -522,16 +508,26 @@ input:-internal-autofill-selected {
     margin-top: 10px;
     font-size: 20px;
 }
+
+
+
+
+
+
+
+
 .datepicker {
     border-radius: 4px;
     direction: ltr;
     -webkit-touch-callout: none;
-}  
-.datepicker .day{
+  }
+  
+  .datepicker .day{
     border-radius: 4px;
     padding: 7px 0;
-}  
-.datepicker-dropdown {
+  }
+  
+  .datepicker-dropdown {
     border: 1px solid #333300;
     background: #F7F8EE;
     border-radius: 10px;
@@ -539,84 +535,99 @@ input:-internal-autofill-selected {
     margin-top: 15px;
     max-width: 300px;
     width: 100%;
-}
-.datepicker table {
+  }
+
+  .datepicker table {
     user-select: none;
     width: 100%;
     margin: 0;
-}
-.datepicker thead .dow {
+  }
+  .datepicker thead .dow {
     padding-top: 12px;
     padding-bottom: 12px;
-}
-.datepicker td,
-.datepicker th {
+  }
+  .datepicker td,
+  .datepicker th {
     text-align: center;
     width: 30px;
     height: 30px;
     border: none;
-}
-.datepicker th {
+  }
+  .datepicker th {
     font-size: 19px;
-}
-.datepicker td {
+  }
+  .datepicker td {
     font-size: 17px;
-}
-.datepicker .datepicker-switch,
-.datepicker .prev,
-.datepicker .next,
-.datepicker tfoot tr th {
+  }
+  .datepicker .datepicker-switch,
+  .datepicker .prev,
+  .datepicker .next,
+  .datepicker tfoot tr th {
     cursor: pointer;
-}
-.datepicker .prev svg,
-.datepicker .next svg {
+  }
+  .datepicker .prev svg,
+  .datepicker .next svg {
     text-align: center;
     display: inline;
-}
-.datepicker .prev .disabled,
-.datepicker .next .disabled {
+  }
+  .datepicker .prev .disabled,
+  .datepicker .next .disabled {
     visibility: hidden;
-}  
-.datepicker .range-start {
+  }
+  
+  .datepicker .range-start{
     background: #337ab7 url("../images/range-bg-1.png") top right no-repeat;
     color: #fff;
-}  
-.datepicker .range-end {
+  }
+  
+  .datepicker .range-end{
     background: #337ab7 url("../images/range-bg-2.png") top left no-repeat;
     color: #fff;
-}  
-.datepicker  .range-start.range-end {
+  }
+  
+  .datepicker  .range-start.range-end{
     background-image: none;
-} 
-.datepicker .range{
+  }
+  
+  
+  .datepicker .range{
     background: #ECBF4B;
-} 
-.datepicker .day:hover,
-.datepicker .month:hover,
-.datepicker .year:hover,
-.datepicker .datepicker-switch:hover,
-.datepicker .next:hover,
-.datepicker .prev:hover {
+  }
+ 
+  .datepicker .day:hover,
+  .datepicker .month:hover,
+  .datepicker .year:hover,
+  .datepicker .datepicker-switch:hover,
+  .datepicker .next:hover,
+  .datepicker .prev:hover {
     background-color: #ECBF4B;
     border-radius: 4px;
-}
-.hover {
+  }
+  
+  
+  .hover {
     background-color: #ECBF4B;
   
-}
-.datepicker .today {
+  }
+  
+  
+  .datepicker .today {
     font-weight:bold;
     color: #ECBF4B;
   
-}
-.datepicker-months, .datepicker-years {
+  }
+  .datepicker-months, .datepicker-years{
     width: 213px;
-}
-.datepicker-months td, .datepicker-years td {
+  
+  }
+  
+  .datepicker-months td, .datepicker-years td {
     width: auto;
     height: auto;
-}
-.datepicker-months .month, .datepicker-years .year {
+  
+  }
+  
+  .datepicker-months .month, .datepicker-years .year{
     background-color: #ECBF4B;
     border-color: #ECBF4B;
     float: left;
@@ -627,18 +638,21 @@ input:-internal-autofill-selected {
     margin: 1%;
     cursor: pointer;
     border-radius: 4px;
-}
-.day.active, .start-date-active {
+  }
+  
+  
+  
+  
+  .day.active, .start-date-active{
     background-color: #ECBF4B;
     border-color: #ECBF4B;
-}
-.day.disabled, .month.disabled, .year.disabled, .start-date-active.disabled {
+  }
+  
+  .day.disabled, .month.disabled, .year.disabled, .start-date-active.disabled{
     cursor: not-allowed;
     filter: alpha(opacity=65);
     -webkit-box-shadow: none;
     box-shadow: none;
     opacity: .65;
-}
-.editSubscriptionForm {
-  display: none;
-}
+  }
+  

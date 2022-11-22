@@ -117,7 +117,7 @@
         </div>
       </li>
       {%- endif -%}
-      {% for link in linklists[section.settings.main_linklist].links %}
+      {% for link in linklists.main-menu.links %}
         <li class="inline-block no-js-focus-wrapper h-full">
           {%- liquid
             assign is_feature_collection_link = false
@@ -450,19 +450,19 @@
 {%- capture accounts -%}
   {% if shop.customer_accounts_enabled %}
     {% if customer %}
-      <a class="{% if show_icons %}{{ icon_link_classes }}{% else %}{{ link_classes }}{% endif %}" href="/account/login">
+      <a class="{% if show_icons %}{{ icon_link_classes }}{% else %}{{ link_classes }}{% endif %}" href="{{ routes.account_url }}">
         <span class="{% if show_icons %}visually-hidden{% endif %}">{{ 'layout.customer.account' | t }}</span>
         {%- if show_icons -%}
         <span class="inline-block w-6 h-6 align-middle">{%- render 'icon-account' -%}</span>
       {%- endif -%}
       </a>
     {% else %}
-      <a class="{% if show_icons %}{{ icon_link_classes }}{% else %}{{ link_classes }}{% endif %}" href="/account/login">
-        <span class="{% if show_icons %}visually-hidden{% endif %}">{{ 'layout.customer.log_in' | t }}</span>
-        {%- if show_icons -%}
-        <span class="inline-block w-6 h-6 align-middle">{%- render 'icon-account' -%}</span>
-        {%- endif -%}
-      </a>
+        <a class="{% if show_icons %}{{ icon_link_classes }}{% else %}{{ link_classes }}{% endif %}" href="{{ routes.account_login_url }}">
+          <span class="{% if show_icons %}visually-hidden{% endif %}">{{ 'layout.customer.log_in' | t }}</span>
+          {%- if show_icons -%}
+          <span class="inline-block w-6 h-6 align-middle">{%- render 'icon-account' -%}</span>
+          {%- endif -%}
+        </a>
     {% endif %}
   {% endif %}
 {% endcapture %}

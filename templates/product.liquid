@@ -24,15 +24,16 @@
   {{ current_variant.price | money }}
   <label for="Quantity">quantity</label>
   <input type="number" id="Quantity" name="quantity" value="1" min="1">
-  {% for group in product.selling_plan_groups %}
-  <fieldset>
-  <legend>{{ group.name}}</legend>
-  {% for selling_plan in group.selling_plans %}
-  <input type="radio" name="selling_plan" value="{{ selling_plan.id }}">
-  {{ selling_plan.name }}
-  {% endfor %}
-  </fieldset>
-  {% endfor %}
+  <input type="number" id="selling_plan" name="selling_plan" value="4447207527" min="4447207527">
+{% for group in product.selling_plan_groups %}
+<fieldset>
+<legend>{{ group.name}}</legend>
+{% for selling_plan in group.selling_plans %}
+<input type="radio" name="selling_plan" value="{{ selling_plan.id }}">
+{{ selling_plan.name }}
+{% endfor %}
+</fieldset>
+{% endfor %}
 
   <button type="submit" name="add" id="AddToCart">Add to cart</button>
 </form>

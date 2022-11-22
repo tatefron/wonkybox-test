@@ -43,6 +43,7 @@
 
   
     --button-border-radius: {{ settings.button_border_radius }};
+    --input-border-radius: {{ settings.input_border_radius }};
     --textarea-border-radius: {% if settings.button_border_radius == '9999px' %}1rem{% else %}{{ settings.button_border_radius }}{% endif %};
     --button-border-width: {{ settings.button_border_width }}{% if settings.button_border_width > 0 %}px{% endif %};
     --input-border-width: {% if settings.button_border_width > 0 %}{{ settings.button_border_width }}px{% else %}1px{% endif %};
@@ -87,7 +88,7 @@
     --color-scheme-text: var(--color-primary-text);
     --color-scheme-background: var(--color-primary-background);
     --color-scheme-accent: var(--color-primary-accent);
-    --color-scheme-card: var(--color-primary-card);
+    --color-border-card: var(--color-border-card);
     --color-scheme-gradient: var(--color-primary-gradient);
     --color-scheme-text-overlay: var(--color-primary-text-overlay);
     --color-scheme-card-text-overlay: var(--color-primary-card-text-overlay);
@@ -251,10 +252,10 @@
     --base-line-height: {{ settings.base_line_height }};
     --line-height-heading: {{ settings.heading_line_height }};
     --font-size-ratio-xs: 0.7491535;
-    --font-size-ratio-sm: 0.8908985;
+    --font-size-ratio-sm: 0.9908985;
     --font-size-ratio-base: 1;
     --font-size-ratio-lg: 1.33484;
-    --font-size-ratio-xl: 1.498307;
+    --font-size-ratio-xl: 1.65;
     --font-size-ratio-2xl: 1.681793;
     --font-size-ratio-3xl: 2;
     --font-size-ratio-4xl: 2.66968;

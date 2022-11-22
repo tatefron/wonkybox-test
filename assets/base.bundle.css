@@ -557,21 +557,21 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: inline-block;
   cursor: pointer;
   border-radius: var(--button-border-radius);
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding-left: 1.525rem;
+  padding-right: 1.525rem;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
   text-align: center;
   font-size: var(--font-size-base);
   line-height: var(--base-line-height);
-    text-transform: var(--button-text-transform);
-    background: rgb(var(--color-button-background));
-    color: rgb(var(--color-button-text));
-    box-shadow: inset 0 0 0 var(--button-border-width)
-      rgb(var(--color-button-border));
-    box-sizing: border-box;
-    transition: transform 0.1s cubic-bezier(0.215, 0.61, 0.355, 1);
-    font-weight: var(--main-font-weight);
+  /* text-transform: var(--button-text-transform); */
+  background: rgb(var(--color-button-background));
+  color: rgb(var(--color-button-text));
+  box-shadow: inset 0 0 0 var(--button-border-width)
+  rgb(var(--color-button-border));
+  box-sizing: border-box;
+  transition: transform 0.1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  font-weight: var(--main-font-weight);
 }
 /*
   Button shadow
@@ -640,11 +640,11 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="password
   cursor: pointer;
   -webkit-appearance: none;
           appearance: none;
-  border-radius: var(--button-border-radius);
+  border-radius: var(--input-border-radius);
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
   font-size: var(--font-size-base);
   line-height: var(--base-line-height);
     box-shadow: inset 0 0 0 var(--input-border-width)
@@ -1197,7 +1197,7 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="password
   max-width: 80rem;
 }
 .max-w-md {
-  max-width: 28rem;
+  max-width: 29rem;
 }
 .max-w-full {
   max-width: 100%;
@@ -1990,6 +1990,9 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="password
 .font-bold {
   font-weight: 700;
 }
+.font-extrabold {
+  font-weight: 800;
+}
 .uppercase {
   text-transform: uppercase;
 }
@@ -2019,6 +2022,9 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="password
 }
 .tracking-rating {
   letter-spacing: 0.3em;
+}
+.tracking-success {
+  letter-spacing: 0.1em;
 }
 .text-scheme-text {
   --tw-text-opacity: 1;
@@ -2186,7 +2192,7 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="password
     --media-drop-shadow-size: 0;
     --media-drop-shadow-top-size: 0;
     --media-drop-shadow-left-size: 0;
-    border-color: rgb(var(--color-card-border));
+    border-color: #101010;
     z-index: 1;
 }
 .card-border {
